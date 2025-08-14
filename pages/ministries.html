@@ -1,0 +1,588 @@
+<!-- Ministry Management Section -->
+<section id="ministries" class="content-section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2>Ministry Management</h2>
+                <p class="mb-0">Oversee all church ministries, small groups, and volunteer coordination</p>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="createNewMinistry()">
+                    <i class="bi bi-plus me-1"></i>New Ministry
+                </button>
+                <button class="btn btn-outline-primary" onclick="manageVolunteers()">
+                    <i class="bi bi-people me-1"></i>Manage Volunteers
+                </button>
+                <button class="btn btn-outline-secondary" onclick="generateMinistryReports()">
+                    <i class="bi bi-graph-up me-1"></i>Reports
+                </button>
+            </div>
+        </div>
+
+        <!-- Ministry Overview Stats -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-diagram-3 text-primary fs-1 mb-2"></i>
+                        <h4 class="text-primary">15</h4>
+                        <h6>Active Ministries</h6>
+                        <small class="text-success">+2 this quarter</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-people text-success fs-1 mb-2"></i>
+                        <h4 class="text-success">234</h4>
+                        <h6>Total Participants</h6>
+                        <small class="text-success">+18 this month</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-person-workspace text-info fs-1 mb-2"></i>
+                        <h4 class="text-info">67</h4>
+                        <h6>Active Volunteers</h6>
+                        <small class="text-success">+5 this month</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-person-badge text-warning fs-1 mb-2"></i>
+                        <h4 class="text-warning">23</h4>
+                        <h6>Ministry Leaders</h6>
+                        <small class="text-info">Across all ministries</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ministry Management Tabs -->
+        <ul class="nav nav-tabs mb-4" id="ministryTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="all-ministries-tab" data-bs-toggle="tab" data-bs-target="#all-ministries" type="button">
+                    All Ministries
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="small-groups-tab" data-bs-toggle="tab" data-bs-target="#small-groups" type="button">
+                    Small Groups
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="volunteers-tab" data-bs-toggle="tab" data-bs-target="#volunteers" type="button">
+                    Volunteers
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="leaders-tab" data-bs-toggle="tab" data-bs-target="#leaders" type="button">
+                    Leaders
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="ministryTabContent">
+            <!-- All Ministries Tab -->
+            <div class="tab-pane fade show active" id="all-ministries" role="tabpanel">
+                <div class="row g-4">
+                    <!-- Youth Ministry -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title">Youth Ministry</h5>
+                                        <span class="badge bg-info">Active</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="editMinistry('youth')">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="viewMinistryDetails('youth')">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="manageMinistryMembers('youth')">Manage Members</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="card-text">Engaging teenagers in faith, fellowship, and service through dynamic programs and activities.</p>
+                                <div class="ministry-stats">
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <strong class="text-primary">45</strong>
+                                            <br><small class="text-muted">Members</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-success">8</strong>
+                                            <br><small class="text-muted">Leaders</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-info">12</strong>
+                                            <br><small class="text-muted">Events</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <small class="text-muted">Leader: Sarah Johnson</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Children's Ministry -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title">Children's Ministry</h5>
+                                        <span class="badge bg-success">Active</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="editMinistry('children')">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="viewMinistryDetails('children')">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="manageMinistryMembers('children')">Manage Members</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="card-text">Nurturing young hearts and minds through age-appropriate Bible lessons and fun activities.</p>
+                                <div class="ministry-stats">
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <strong class="text-primary">32</strong>
+                                            <br><small class="text-muted">Children</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-success">6</strong>
+                                            <br><small class="text-muted">Teachers</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-info">8</strong>
+                                            <br><small class="text-muted">Programs</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <small class="text-muted">Leader: Emily Wilson</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Worship Team -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title">Worship Team</h5>
+                                        <span class="badge bg-warning text-dark">Active</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="editMinistry('worship')">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="viewMinistryDetails('worship')">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="manageMinistryMembers('worship')">Manage Members</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="card-text">Leading the congregation in meaningful worship through music, vocals, and technical support.</p>
+                                <div class="ministry-stats">
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <strong class="text-primary">18</strong>
+                                            <br><small class="text-muted">Members</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-success">3</strong>
+                                            <br><small class="text-muted">Leaders</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-info">4</strong>
+                                            <br><small class="text-muted">Services</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <small class="text-muted">Leader: Michael Davis</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Outreach -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title">Community Outreach</h5>
+                                        <span class="badge bg-primary">Active</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="editMinistry('outreach')">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="viewMinistryDetails('outreach')">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="manageMinistryMembers('outreach')">Manage Members</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="card-text">Serving our local community through food drives, homeless outreach, and community events.</p>
+                                <div class="ministry-stats">
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <strong class="text-primary">28</strong>
+                                            <br><small class="text-muted">Volunteers</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-success">4</strong>
+                                            <br><small class="text-muted">Coordinators</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-info">15</strong>
+                                            <br><small class="text-muted">Projects</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <small class="text-muted">Leader: David Rodriguez</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prayer Ministry -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title">Prayer Ministry</h5>
+                                        <span class="badge bg-secondary">Active</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="editMinistry('prayer')">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="viewMinistryDetails('prayer')">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="manageMinistryMembers('prayer')">Manage Members</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="card-text">Dedicated to intercession, prayer support, and spiritual guidance for our church family.</p>
+                                <div class="ministry-stats">
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <strong class="text-primary">22</strong>
+                                            <br><small class="text-muted">Members</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-success">3</strong>
+                                            <br><small class="text-muted">Leaders</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-info">156</strong>
+                                            <br><small class="text-muted">Requests</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <small class="text-muted">Leader: Margaret Thompson</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hospitality Ministry -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title">Hospitality Ministry</h5>
+                                        <span class="badge bg-success">Active</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="editMinistry('hospitality')">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="viewMinistryDetails('hospitality')">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="manageMinistryMembers('hospitality')">Manage Members</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="card-text">Creating a welcoming environment through greeting, ushering, and fellowship coordination.</p>
+                                <div class="ministry-stats">
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <strong class="text-primary">35</strong>
+                                            <br><small class="text-muted">Volunteers</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-success">5</strong>
+                                            <br><small class="text-muted">Coordinators</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong class="text-info">8</strong>
+                                            <br><small class="text-muted">Teams</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <small class="text-muted">Leader: Linda Martinez</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Small Groups Tab -->
+            <div class="tab-pane fade" id="small-groups" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Small Groups Management</h4>
+                    <button class="btn btn-primary" onclick="createSmallGroup()">
+                        <i class="bi bi-plus me-1"></i>Create Group
+                    </button>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card feature-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">Men's Bible Study</h6>
+                                <span class="badge bg-primary">8 Members</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="small text-muted mb-2">
+                                    <i class="bi bi-calendar me-1"></i>Thursdays 7:00 PM
+                                    <i class="bi bi-geo-alt ms-2 me-1"></i>Conference Room A
+                                </p>
+                                <p class="card-text">Weekly Bible study focusing on practical Christian living and brotherhood.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Leader: John Smith</small>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-outline-primary" onclick="manageGroupMembers('mens-bible')">Members</button>
+                                        <button class="btn btn-outline-secondary" onclick="editGroup('mens-bible')">Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card feature-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">Women's Fellowship</h6>
+                                <span class="badge bg-success">12 Members</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="small text-muted mb-2">
+                                    <i class="bi bi-calendar me-1"></i>Tuesdays 10:00 AM
+                                    <i class="bi bi-geo-alt ms-2 me-1"></i>Fellowship Hall
+                                </p>
+                                <p class="card-text">Bible study and fellowship for women of all ages with childcare provided.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Leader: Mary Johnson</small>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-outline-primary" onclick="manageGroupMembers('womens-fellowship')">Members</button>
+                                        <button class="btn btn-outline-secondary" onclick="editGroup('womens-fellowship')">Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volunteers Tab -->
+            <div class="tab-pane fade" id="volunteers" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Volunteer Management</h4>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="addVolunteer()">
+                            <i class="bi bi-person-plus me-1"></i>Add Volunteer
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="scheduleVolunteers()">
+                            <i class="bi bi-calendar-week me-1"></i>Schedule
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Ministry</th>
+                                <th>Role</th>
+                                <th>Availability</th>
+                                <th>Last Served</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>Worship Team</td>
+                                <td>Sound Technician</td>
+                                <td><span class="badge bg-success">Available</span></td>
+                                <td>Dec 10, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editVolunteer('vol001')">Edit</button>
+                                    <button class="btn btn-sm btn-outline-info" onclick="scheduleVolunteer('vol001')">Schedule</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Wilson</td>
+                                <td>Children's Ministry</td>
+                                <td>Teacher</td>
+                                <td><span class="badge bg-warning">Limited</span></td>
+                                <td>Dec 8, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editVolunteer('vol002')">Edit</button>
+                                    <button class="btn btn-sm btn-outline-info" onclick="scheduleVolunteer('vol002')">Schedule</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Leaders Tab -->
+            <div class="tab-pane fade" id="leaders" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Ministry Leaders</h4>
+                    <button class="btn btn-primary" onclick="appointLeader()">
+                        <i class="bi bi-person-badge me-1"></i>Appoint Leader
+                    </button>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card text-center">
+                            <div class="card-body">
+                                <img src="assets/images/leader1.jpg" class="rounded-circle mb-3" width="80" height="80" alt="Sarah Johnson">
+                                <h6>Sarah Johnson</h6>
+                                <p class="text-muted small">Youth Ministry Leader</p>
+                                <p class="small">Leading since: January 2020</p>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-primary" onclick="viewLeaderProfile('leader001')">Profile</button>
+                                    <button class="btn btn-outline-secondary" onclick="contactLeader('leader001')">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card feature-card text-center">
+                            <div class="card-body">
+                                <img src="assets/images/leader2.jpg" class="rounded-circle mb-3" width="80" height="80" alt="Michael Davis">
+                                <h6>Michael Davis</h6>
+                                <p class="text-muted small">Worship Leader</p>
+                                <p class="small">Leading since: March 2019</p>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-primary" onclick="viewLeaderProfile('leader002')">Profile</button>
+                                    <button class="btn btn-outline-secondary" onclick="contactLeader('leader002')">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Ministry Management JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    setupMinistryManagement();
+});
+
+function setupMinistryManagement() {
+    // Initialize ministry management features
+    console.log('Ministry management initialized');
+}
+
+function createNewMinistry() {
+    uiComponents.showToast('Opening ministry creation form...', 'info');
+}
+
+function editMinistry(ministryId) {
+    uiComponents.showToast(`Editing ministry: ${ministryId}`, 'info');
+}
+
+function viewMinistryDetails(ministryId) {
+    uiComponents.showToast(`Viewing details for: ${ministryId}`, 'info');
+}
+
+function manageMinistryMembers(ministryId) {
+    uiComponents.showToast(`Managing members for: ${ministryId}`, 'info');
+}
+
+function createSmallGroup() {
+    uiComponents.showToast('Creating new small group...', 'info');
+}
+
+function manageGroupMembers(groupId) {
+    uiComponents.showToast(`Managing group members: ${groupId}`, 'info');
+}
+
+function editGroup(groupId) {
+    uiComponents.showToast(`Editing group: ${groupId}`, 'info');
+}
+
+function addVolunteer() {
+    uiComponents.showToast('Adding new volunteer...', 'info');
+}
+
+function scheduleVolunteers() {
+    uiComponents.showToast('Opening volunteer scheduling...', 'info');
+}
+
+function editVolunteer(volunteerId) {
+    uiComponents.showToast(`Editing volunteer: ${volunteerId}`, 'info');
+}
+
+function scheduleVolunteer(volunteerId) {
+    uiComponents.showToast(`Scheduling volunteer: ${volunteerId}`, 'info');
+}
+
+function appointLeader() {
+    uiComponents.showToast('Appointing new ministry leader...', 'info');
+}
+
+function viewLeaderProfile(leaderId) {
+    uiComponents.showToast(`Viewing leader profile: ${leaderId}`, 'info');
+}
+
+function contactLeader(leaderId) {
+    uiComponents.showToast(`Contacting leader: ${leaderId}`, 'info');
+}
+
+function generateMinistryReports() {
+    uiComponents.showToast('Generating ministry reports...', 'info');
+}
+</script>

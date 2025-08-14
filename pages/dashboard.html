@@ -1,0 +1,670 @@
+<!-- Admin Dashboard Section -->
+<section id="dashboard" class="content-section">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-2 col-md-3">
+                <div class="admin-sidebar bg-dark text-white p-3 rounded">
+                    <h6 class="text-center mb-4">
+                        <i class="bi bi-speedometer2 me-2"></i>Admin Panel
+                    </h6>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item mb-2">
+                            <a class="nav-link active" href="#" onclick="loadDashboardSection('overview')">
+                                <i class="bi bi-house me-2"></i>Overview
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link" href="#" onclick="loadDashboardSection('members')">
+                                <i class="bi bi-people me-2"></i>Members
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link" href="#" onclick="loadDashboardSection('events')">
+                                <i class="bi bi-calendar-event me-2"></i>Events
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link" href="#" onclick="loadDashboardSection('offerings')">
+                                <i class="bi bi-cash-stack me-2"></i>Offerings
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link" href="#" onclick="loadDashboardSection('ministries')">
+                                <i class="bi bi-diagram-3 me-2"></i>Ministries
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link" href="#" onclick="loadDashboardSection('communications')">
+                                <i class="bi bi-envelope me-2"></i>Communications
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link" href="#" onclick="loadDashboardSection('reports')">
+                                <i class="bi bi-graph-up me-2"></i>Reports
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link" href="#" onclick="loadDashboardSection('settings')">
+                                <i class="bi bi-gear me-2"></i>Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Content -->
+            <div class="col-lg-10 col-md-9">
+                <div id="dashboardContent">
+                    <!-- Overview Dashboard -->
+                    <div id="overviewSection">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Dashboard Overview</h3>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary" onclick="refreshDashboard()">
+                                    <i class="bi bi-arrow-clockwise me-1"></i>Refresh
+                                </button>
+                                <button class="btn btn-primary" onclick="exportDashboard()">
+                                    <i class="bi bi-download me-1"></i>Export
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Key Metrics -->
+                        <div class="row g-4 mb-5">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card feature-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-title text-muted mb-1">Total Members</h6>
+                                                <h3 class="mb-0 text-primary">487</h3>
+                                                <small class="text-success">
+                                                    <i class="bi bi-arrow-up"></i> +12 this month
+                                                </small>
+                                            </div>
+                                            <div class="stat-icon">
+                                                <i class="bi bi-people text-primary fs-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card feature-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-title text-muted mb-1">Weekly Attendance</h6>
+                                                <h3 class="mb-0 text-success">342</h3>
+                                                <small class="text-success">
+                                                    <i class="bi bi-arrow-up"></i> +5.2% avg
+                                                </small>
+                                            </div>
+                                            <div class="stat-icon">
+                                                <i class="bi bi-person-check text-success fs-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card feature-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-title text-muted mb-1">Active Ministries</h6>
+                                                <h3 class="mb-0 text-info">15</h3>
+                                                <small class="text-info">
+                                                    <i class="bi bi-arrow-right"></i> 2 new this quarter
+                                                </small>
+                                            </div>
+                                            <div class="stat-icon">
+                                                <i class="bi bi-diagram-3 text-info fs-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card feature-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-title text-muted mb-1">Upcoming Events</h6>
+                                                <h3 class="mb-0 text-warning">8</h3>
+                                                <small class="text-warning">
+                                                    <i class="bi bi-calendar"></i> Next 30 days
+                                                </small>
+                                            </div>
+                                            <div class="stat-icon">
+                                                <i class="bi bi-calendar-event text-warning fs-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity & Quick Actions -->
+                        <div class="row g-4">
+                            <div class="col-lg-8">
+                                <div class="card feature-card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Recent Activity</h5>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewAllActivity()">
+                                            View All
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="activity-feed">
+                                            <div class="activity-item d-flex align-items-center mb-3">
+                                                <div class="activity-icon bg-success rounded-circle me-3">
+                                                    <i class="bi bi-person-plus text-white"></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0">New member registration: Sarah Johnson</p>
+                                                    <small class="text-muted">2 hours ago</small>
+                                                </div>
+                                            </div>
+                                            <div class="activity-item d-flex align-items-center mb-3">
+                                                <div class="activity-icon bg-primary rounded-circle me-3">
+                                                    <i class="bi bi-calendar-plus text-white"></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0">New event created: Youth Christmas Party</p>
+                                                    <small class="text-muted">4 hours ago</small>
+                                                </div>
+                                            </div>
+                                            <div class="activity-item d-flex align-items-center mb-3">
+                                                <div class="activity-icon bg-warning rounded-circle me-3">
+                                                    <i class="bi bi-cash text-white"></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0">Offering recorded: $2,450 (Sunday Service)</p>
+                                                    <small class="text-muted">1 day ago</small>
+                                                </div>
+                                            </div>
+                                            <div class="activity-item d-flex align-items-center mb-3">
+                                                <div class="activity-icon bg-info rounded-circle me-3">
+                                                    <i class="bi bi-envelope text-white"></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0">Newsletter sent to 456 subscribers</p>
+                                                    <small class="text-muted">2 days ago</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card feature-card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Quick Actions</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-primary" onclick="addNewMember()">
+                                                <i class="bi bi-person-plus me-2"></i>Add New Member
+                                            </button>
+                                            <button class="btn btn-success" onclick="createEvent()">
+                                                <i class="bi bi-calendar-plus me-2"></i>Create Event
+                                            </button>
+                                            <button class="btn btn-info" onclick="recordOffering()">
+                                                <i class="bi bi-cash-stack me-2"></i>Record Offering
+                                            </button>
+                                            <button class="btn btn-warning" onclick="sendAnnouncement()">
+                                                <i class="bi bi-megaphone me-2"></i>Send Announcement
+                                            </button>
+                                            <button class="btn btn-secondary" onclick="generateReport()">
+                                                <i class="bi bi-file-text me-2"></i>Generate Report
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pending Tasks -->
+                                <div class="card feature-card mt-4">
+                                    <div class="card-header">
+                                        <h6 class="mb-0">Pending Tasks</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="task-list">
+                                            <div class="task-item d-flex align-items-center mb-2">
+                                                <input type="checkbox" class="form-check-input me-2">
+                                                <small>Review new member applications (3)</small>
+                                            </div>
+                                            <div class="task-item d-flex align-items-center mb-2">
+                                                <input type="checkbox" class="form-check-input me-2">
+                                                <small>Approve event budget requests (2)</small>
+                                            </div>
+                                            <div class="task-item d-flex align-items-center mb-2">
+                                                <input type="checkbox" class="form-check-input me-2">
+                                                <small>Send monthly giving statements</small>
+                                            </div>
+                                            <div class="task-item d-flex align-items-center mb-2">
+                                                <input type="checkbox" class="form-check-input me-2" checked>
+                                                <small class="text-decoration-line-through">Update website announcements</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charts and Analytics -->
+                        <div class="row g-4 mt-4">
+                            <div class="col-lg-6">
+                                <div class="card feature-card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Attendance Trends</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="attendanceChart" width="400" height="200"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card feature-card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Giving Trends</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="givingChart" width="400" height="200"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ministry Performance -->
+                        <div class="row g-4 mt-4">
+                            <div class="col-12">
+                                <div class="card feature-card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Ministry Performance</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="ministry-stat text-center">
+                                                    <h4 class="text-primary">45</h4>
+                                                    <p class="mb-1">Youth Ministry</p>
+                                                    <small class="text-success">+8 this month</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="ministry-stat text-center">
+                                                    <h4 class="text-success">32</h4>
+                                                    <p class="mb-1">Children's Ministry</p>
+                                                    <small class="text-success">+5 this month</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="ministry-stat text-center">
+                                                    <h4 class="text-info">28</h4>
+                                                    <p class="mb-1">Small Groups</p>
+                                                    <small class="text-success">+2 new groups</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="ministry-stat text-center">
+                                                    <h4 class="text-warning">67</h4>
+                                                    <p class="mb-1">Volunteers</p>
+                                                    <small class="text-success">+12 this month</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add Member Modal -->
+<div class="modal fade" id="addMemberModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Member</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addMemberForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="newMemberFirstName" class="form-label">First Name *</label>
+                            <input type="text" class="form-control" id="newMemberFirstName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="newMemberLastName" class="form-label">Last Name *</label>
+                            <input type="text" class="form-control" id="newMemberLastName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="newMemberEmail" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="newMemberEmail" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="newMemberPhone" class="form-label">Phone *</label>
+                            <input type="tel" class="form-control" id="newMemberPhone" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="newMemberRole" class="form-label">Role *</label>
+                            <select class="form-select" id="newMemberRole" required>
+                                <option value="">Select role...</option>
+                                <option value="member">Member</option>
+                                <option value="volunteer">Volunteer</option>
+                                <option value="ministry-leader">Ministry Leader</option>
+                                <option value="staff">Staff</option>
+                                <option value="elder">Elder</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="newMemberMinistry" class="form-label">Primary Ministry</label>
+                            <select class="form-select" id="newMemberMinistry">
+                                <option value="">Select ministry...</option>
+                                <option value="worship">Worship Team</option>
+                                <option value="youth">Youth Ministry</option>
+                                <option value="children">Children's Ministry</option>
+                                <option value="outreach">Community Outreach</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="prayer">Prayer Ministry</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="newMemberNotes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="newMemberNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="addMemberForm" class="btn btn-primary">
+                    <i class="bi bi-person-plus me-1"></i>Add Member
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Record Offering Modal -->
+<div class="modal fade" id="recordOfferingModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Record Offering</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="recordOfferingForm">
+                    <div class="mb-3">
+                        <label for="offeringDate" class="form-label">Date *</label>
+                        <input type="date" class="form-control" id="offeringDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="offeringService" class="form-label">Service *</label>
+                        <select class="form-select" id="offeringService" required>
+                            <option value="">Select service...</option>
+                            <option value="sunday-9am">Sunday 9:00 AM</option>
+                            <option value="sunday-11am">Sunday 11:00 AM</option>
+                            <option value="wednesday-7pm">Wednesday 7:00 PM</option>
+                            <option value="special-event">Special Event</option>
+                        </select>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label for="cashAmount" class="form-label">Cash Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="cashAmount" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="checkAmount" class="form-label">Check Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="checkAmount" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="onlineAmount" class="form-label">Online Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="onlineAmount" step="0.01" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="offeringFund" class="form-label">Designated Fund</label>
+                        <select class="form-select" id="offeringFund">
+                            <option value="general">General Fund</option>
+                            <option value="building">Building Fund</option>
+                            <option value="missions">Missions</option>
+                            <option value="youth">Youth Ministry</option>
+                            <option value="children">Children's Ministry</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="offeringNotes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="offeringNotes" rows="2"></textarea>
+                    </div>
+                    <div class="alert alert-info">
+                        <strong>Total Amount: $<span id="totalAmount">0.00</span></strong>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="recordOfferingForm" class="btn btn-primary">
+                    <i class="bi bi-save me-1"></i>Record Offering
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Dashboard JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    setupDashboard();
+    loadDashboardCharts();
+});
+
+function setupDashboard() {
+    // Set current date for offering form
+    const today = new Date().toISOString().split('T')[0];
+    const offeringDate = document.getElementById('offeringDate');
+    if (offeringDate) {
+        offeringDate.value = today;
+    }
+
+    // Setup offering amount calculation
+    const amountInputs = ['cashAmount', 'checkAmount', 'onlineAmount'];
+    amountInputs.forEach(inputId => {
+        const input = document.getElementById(inputId);
+        if (input) {
+            input.addEventListener('input', calculateTotalOffering);
+        }
+    });
+
+    // Setup forms
+    setupDashboardForms();
+}
+
+function loadDashboardSection(section) {
+    // Update active nav
+    document.querySelectorAll('.admin-sidebar .nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    event.target.classList.add('active');
+
+    // Load section content
+    const content = document.getElementById('dashboardContent');
+    
+    switch(section) {
+        case 'members':
+            loadMembersManagement();
+            break;
+        case 'events':
+            loadEventsManagement();
+            break;
+        case 'offerings':
+            loadOfferingsManagement();
+            break;
+        case 'ministries':
+            loadMinistriesManagement();
+            break;
+        case 'communications':
+            loadCommunicationsManagement();
+            break;
+        case 'reports':
+            loadReportsManagement();
+            break;
+        case 'settings':
+            loadSettingsManagement();
+            break;
+        default:
+            // Keep overview section visible
+            break;
+    }
+}
+
+function setupDashboardForms() {
+    // Add member form
+    const addMemberForm = document.getElementById('addMemberForm');
+    if (addMemberForm) {
+        addMemberForm.addEventListener('submit', handleAddMember);
+    }
+
+    // Record offering form
+    const recordOfferingForm = document.getElementById('recordOfferingForm');
+    if (recordOfferingForm) {
+        recordOfferingForm.addEventListener('submit', handleRecordOffering);
+    }
+}
+
+function calculateTotalOffering() {
+    const cash = parseFloat(document.getElementById('cashAmount').value) || 0;
+    const check = parseFloat(document.getElementById('checkAmount').value) || 0;
+    const online = parseFloat(document.getElementById('onlineAmount').value) || 0;
+    
+    const total = cash + check + online;
+    document.getElementById('totalAmount').textContent = total.toFixed(2);
+}
+
+function addNewMember() {
+    const modal = new bootstrap.Modal(document.getElementById('addMemberModal'));
+    modal.show();
+}
+
+function recordOffering() {
+    const modal = new bootstrap.Modal(document.getElementById('recordOfferingModal'));
+    modal.show();
+}
+
+function handleAddMember(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    // Show loading
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Adding...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addMemberModal'));
+        modal.hide();
+        
+        uiComponents.showToast('Member added successfully!', 'success');
+        form.reset();
+        
+        // Update member count
+        updateMemberCount();
+    }, 2000);
+}
+
+function handleRecordOffering(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    // Show loading
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Recording...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        const modal = bootstrap.Modal.getInstance(document.getElementById('recordOfferingModal'));
+        modal.hide();
+        
+        uiComponents.showToast('Offering recorded successfully!', 'success');
+        form.reset();
+        
+        // Update offering stats
+        updateOfferingStats();
+    }, 2000);
+}
+
+function createEvent() {
+    window.location.hash = 'events';
+    uiComponents.showToast('Redirecting to event creation...', 'info');
+}
+
+function sendAnnouncement() {
+    window.location.hash = 'communications';
+    uiComponents.showToast('Redirecting to communications...', 'info');
+}
+
+function generateReport() {
+    window.location.hash = 'reports';
+    uiComponents.showToast('Redirecting to reports...', 'info');
+}
+
+function refreshDashboard() {
+    uiComponents.showToast('Dashboard refreshed!', 'success');
+    loadDashboardCharts();
+}
+
+function exportDashboard() {
+    uiComponents.showToast('Dashboard exported to PDF!', 'success');
+}
+
+function updateMemberCount() {
+    // Update member count in dashboard
+    const memberCountElement = document.querySelector('.text-primary');
+    if (memberCountElement && memberCountElement.textContent === '487') {
+        memberCountElement.textContent = '488';
+    }
+}
+
+function updateOfferingStats() {
+    // Update offering stats in dashboard
+    uiComponents.showToast('Offering statistics updated!', 'info');
+}
+
+function loadDashboardCharts() {
+    // Placeholder for chart loading
+    console.log('Loading dashboard charts...');
+}
+</script>

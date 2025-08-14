@@ -1,0 +1,702 @@
+<!-- Media and Resources Section -->
+<section id="media" class="content-section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2>Media & Resources Management</h2>
+                <p class="mb-0">Manage sermons, media files, documents, and digital resources</p>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="uploadMedia()">
+                    <i class="bi bi-cloud-upload me-1"></i>Upload Media
+                </button>
+                <button class="btn btn-outline-primary" onclick="addSermon()">
+                    <i class="bi bi-mic me-1"></i>Add Sermon
+                </button>
+                <button class="btn btn-outline-secondary" onclick="organizeLibrary()">
+                    <i class="bi bi-folder-plus me-1"></i>Organize
+                </button>
+            </div>
+        </div>
+
+        <!-- Media Stats -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-play-circle text-primary fs-1 mb-2"></i>
+                        <h4 class="text-primary">156</h4>
+                        <h6>Total Sermons</h6>
+                        <small class="text-success">+4 this month</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-image text-success fs-1 mb-2"></i>
+                        <h4 class="text-success">342</h4>
+                        <h6>Photos & Images</h6>
+                        <small class="text-success">+23 this month</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-file-earmark-text text-info fs-1 mb-2"></i>
+                        <h4 class="text-info">89</h4>
+                        <h6>Documents</h6>
+                        <small class="text-info">Study guides, forms</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-download text-warning fs-1 mb-2"></i>
+                        <h4 class="text-warning">1,247</h4>
+                        <h6>Total Downloads</h6>
+                        <small class="text-warning">This month</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Media Management Tabs -->
+        <ul class="nav nav-tabs mb-4" id="mediaTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="sermons-tab" data-bs-toggle="tab" data-bs-target="#sermons" type="button">
+                    Sermons
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="media-library-tab" data-bs-toggle="tab" data-bs-target="#media-library" type="button">
+                    Media Library
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button">
+                    Documents
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="live-streaming-tab" data-bs-toggle="tab" data-bs-target="#live-streaming" type="button">
+                    Live Streaming
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="mediaTabContent">
+            <!-- Sermons Tab -->
+            <div class="tab-pane fade show active" id="sermons" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Sermon Archive</h4>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="addSermon()">
+                            <i class="bi bi-plus me-1"></i>Add Sermon
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="importSermons()">
+                            <i class="bi bi-upload me-1"></i>Import
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="exportSermons()">
+                            <i class="bi bi-download me-1"></i>Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sermon Filters -->
+                <div class="row mb-4">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search sermons..." id="sermonSearch">
+                            <button class="btn btn-outline-secondary" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <select class="form-select" id="sermonSeries">
+                                    <option value="">All Series</option>
+                                    <option value="advent-2024">Advent 2024</option>
+                                    <option value="faith-foundations">Faith Foundations</option>
+                                    <option value="psalms-study">Psalms Study</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" id="sermonSpeaker">
+                                    <option value="">All Speakers</option>
+                                    <option value="pastor-john">Pastor John Smith</option>
+                                    <option value="pastor-sarah">Pastor Sarah Johnson</option>
+                                    <option value="guest-speakers">Guest Speakers</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermons List -->
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card feature-card">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div class="sermon-thumbnail position-relative">
+                                        <img src="assets/images/sermon-advent-1.jpg" class="img-fluid h-100 object-fit-cover" alt="Sermon Thumbnail">
+                                        <div class="play-overlay">
+                                            <button class="btn btn-primary btn-lg rounded-circle" onclick="playSermon('sermon001')">
+                                                <i class="bi bi-play-fill"></i>
+                                            </button>
+                                        </div>
+                                        <div class="duration-badge">
+                                            <span class="badge bg-dark">32:15</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Hope in the Darkness</h6>
+                                        <p class="card-text small text-muted mb-2">
+                                            <i class="bi bi-person me-1"></i>Pastor John Smith
+                                            <i class="bi bi-calendar ms-2 me-1"></i>Dec 10, 2024
+                                        </p>
+                                        <p class="card-text small">First sermon in our Advent series exploring the theme of hope during challenging times.</p>
+                                        <div class="sermon-stats small text-muted mb-2">
+                                            <i class="bi bi-eye me-1"></i>234 views
+                                            <i class="bi bi-download ms-2 me-1"></i>45 downloads
+                                        </div>
+                                        <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-outline-primary" onclick="editSermon('sermon001')">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success" onclick="downloadSermon('sermon001')">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                            <button class="btn btn-outline-info" onclick="shareSermon('sermon001')">
+                                                <i class="bi bi-share"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card feature-card">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div class="sermon-thumbnail position-relative">
+                                        <img src="assets/images/sermon-thanksgiving.jpg" class="img-fluid h-100 object-fit-cover" alt="Sermon Thumbnail">
+                                        <div class="play-overlay">
+                                            <button class="btn btn-primary btn-lg rounded-circle" onclick="playSermon('sermon002')">
+                                                <i class="bi bi-play-fill"></i>
+                                            </button>
+                                        </div>
+                                        <div class="duration-badge">
+                                            <span class="badge bg-dark">28:42</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Grateful Hearts</h6>
+                                        <p class="card-text small text-muted mb-2">
+                                            <i class="bi bi-person me-1"></i>Pastor Sarah Johnson
+                                            <i class="bi bi-calendar ms-2 me-1"></i>Nov 26, 2024
+                                        </p>
+                                        <p class="card-text small">A Thanksgiving message about cultivating gratitude in all circumstances.</p>
+                                        <div class="sermon-stats small text-muted mb-2">
+                                            <i class="bi bi-eye me-1"></i>189 views
+                                            <i class="bi bi-download ms-2 me-1"></i>67 downloads
+                                        </div>
+                                        <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-outline-primary" onclick="editSermon('sermon002')">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success" onclick="downloadSermon('sermon002')">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                            <button class="btn btn-outline-info" onclick="shareSermon('sermon002')">
+                                                <i class="bi bi-share"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media Library Tab -->
+            <div class="tab-pane fade" id="media-library" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Media Library</h4>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="uploadMedia()">
+                            <i class="bi bi-cloud-upload me-1"></i>Upload Files
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="createFolder()">
+                            <i class="bi bi-folder-plus me-1"></i>New Folder
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="bulkActions()">
+                            <i class="bi bi-check2-square me-1"></i>Bulk Actions
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Media Folders -->
+                <div class="row g-3 mb-4">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="media-folder" onclick="openFolder('events')">
+                            <i class="bi bi-folder-fill text-warning fs-1"></i>
+                            <h6 class="mt-2">Events</h6>
+                            <small class="text-muted">45 files</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="media-folder" onclick="openFolder('worship')">
+                            <i class="bi bi-folder-fill text-info fs-1"></i>
+                            <h6 class="mt-2">Worship</h6>
+                            <small class="text-muted">23 files</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="media-folder" onclick="openFolder('youth')">
+                            <i class="bi bi-folder-fill text-success fs-1"></i>
+                            <h6 class="mt-2">Youth</h6>
+                            <small class="text-muted">67 files</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="media-folder" onclick="openFolder('children')">
+                            <i class="bi bi-folder-fill text-primary fs-1"></i>
+                            <h6 class="mt-2">Children</h6>
+                            <small class="text-muted">89 files</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Media Files -->
+                <h5 class="mb-3">Recent Uploads</h5>
+                <div class="row g-3">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="media-item">
+                            <div class="media-thumbnail">
+                                <img src="assets/images/event-christmas.jpg" class="img-fluid" alt="Christmas Event">
+                                <div class="media-overlay">
+                                    <button class="btn btn-sm btn-light" onclick="viewMedia('img001')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light" onclick="downloadMedia('img001')">
+                                        <i class="bi bi-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <h6 class="mt-2 small">Christmas Setup</h6>
+                            <small class="text-muted">Dec 8, 2024</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <div class="media-item">
+                            <div class="media-thumbnail">
+                                <div class="file-icon bg-danger text-white">
+                                    <i class="bi bi-file-earmark-pdf fs-2"></i>
+                                </div>
+                                <div class="media-overlay">
+                                    <button class="btn btn-sm btn-light" onclick="viewMedia('pdf001')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-light" onclick="downloadMedia('pdf001')">
+                                        <i class="bi bi-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <h6 class="mt-2 small">Study Guide</h6>
+                            <small class="text-muted">Dec 7, 2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Tab -->
+            <div class="tab-pane fade" id="documents" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Document Library</h4>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="uploadDocument()">
+                            <i class="bi bi-file-plus me-1"></i>Upload Document
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="createDocument()">
+                            <i class="bi bi-file-text me-1"></i>Create New
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Document Categories -->
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card feature-card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Recent Documents</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Document</th>
+                                                <th>Category</th>
+                                                <th>Modified</th>
+                                                <th>Size</th>
+                                                <th>Downloads</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                                    Advent Study Guide
+                                                </td>
+                                                <td><span class="badge bg-primary">Study Materials</span></td>
+                                                <td>Dec 8, 2024</td>
+                                                <td>2.3 MB</td>
+                                                <td>45</td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button class="btn btn-outline-primary" onclick="editDocument('doc001')">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-success" onclick="downloadDocument('doc001')">
+                                                            <i class="bi bi-download"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-info" onclick="shareDocument('doc001')">
+                                                            <i class="bi bi-share"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <i class="bi bi-file-earmark-word text-primary me-2"></i>
+                                                    Membership Application
+                                                </td>
+                                                <td><span class="badge bg-success">Forms</span></td>
+                                                <td>Dec 5, 2024</td>
+                                                <td>156 KB</td>
+                                                <td>23</td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button class="btn btn-outline-primary" onclick="editDocument('doc002')">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-success" onclick="downloadDocument('doc002')">
+                                                            <i class="bi bi-download"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-info" onclick="shareDocument('doc002')">
+                                                            <i class="bi bi-share"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card feature-card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Document Categories</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Study Materials
+                                        <span class="badge bg-primary">23</span>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Forms & Applications
+                                        <span class="badge bg-success">15</span>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Ministry Resources
+                                        <span class="badge bg-info">18</span>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Administrative
+                                        <span class="badge bg-warning text-dark">12</span>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        Event Materials
+                                        <span class="badge bg-secondary">21</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="card feature-card mt-4">
+                            <div class="card-header">
+                                <h6 class="mb-0">Quick Actions</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary" onclick="createBulletin()">
+                                        <i class="bi bi-file-text me-1"></i>Create Bulletin
+                                    </button>
+                                    <button class="btn btn-outline-success" onclick="createStudyGuide()">
+                                        <i class="bi bi-book me-1"></i>Create Study Guide
+                                    </button>
+                                    <button class="btn btn-outline-info" onclick="createForm()">
+                                        <i class="bi bi-clipboard me-1"></i>Create Form
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Streaming Tab -->
+            <div class="tab-pane fade" id="live-streaming" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Live Streaming Management</h4>
+                    <div class="btn-group">
+                        <button class="btn btn-success" onclick="startLiveStream()">
+                            <i class="bi bi-broadcast me-1"></i>Go Live
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="scheduleLiveStream()">
+                            <i class="bi bi-calendar-plus me-1"></i>Schedule Stream
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="streamSettings()">
+                            <i class="bi bi-gear me-1"></i>Settings
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card feature-card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Stream Status</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="stream-status text-center py-4">
+                                    <i class="bi bi-broadcast text-muted fs-1 mb-3"></i>
+                                    <h5 class="text-muted">Stream Offline</h5>
+                                    <p class="text-muted">No active live stream</p>
+                                    <button class="btn btn-success btn-lg" onclick="startLiveStream()">
+                                        <i class="bi bi-play-circle me-2"></i>Start Live Stream
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Streams -->
+                        <div class="card feature-card mt-4">
+                            <div class="card-header">
+                                <h6 class="mb-0">Scheduled Streams</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="scheduled-stream d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h6 class="mb-1">Sunday Morning Service</h6>
+                                        <small class="text-muted">December 17, 2024 at 11:00 AM</small>
+                                    </div>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-outline-primary" onclick="editScheduledStream('stream001')">Edit</button>
+                                        <button class="btn btn-outline-success" onclick="testStream('stream001')">Test</button>
+                                    </div>
+                                </div>
+                                <div class="scheduled-stream d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Christmas Eve Service</h6>
+                                        <small class="text-muted">December 24, 2024 at 7:00 PM</small>
+                                    </div>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-outline-primary" onclick="editScheduledStream('stream002')">Edit</button>
+                                        <button class="btn btn-outline-success" onclick="testStream('stream002')">Test</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card feature-card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Stream Analytics</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="stat-item mb-3">
+                                    <h4 class="text-primary mb-0">234</h4>
+                                    <small class="text-muted">Average Viewers</small>
+                                </div>
+                                <div class="stat-item mb-3">
+                                    <h4 class="text-success mb-0">456</h4>
+                                    <small class="text-muted">Peak Viewers (Last Stream)</small>
+                                </div>
+                                <div class="stat-item mb-3">
+                                    <h4 class="text-info mb-0">1.2K</h4>
+                                    <small class="text-muted">Total Watch Hours</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stream Platforms -->
+                        <div class="card feature-card mt-4">
+                            <div class="card-header">
+                                <h6 class="mb-0">Streaming Platforms</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="platform-item d-flex justify-content-between align-items-center mb-2">
+                                    <span><i class="bi bi-youtube text-danger me-2"></i>YouTube</span>
+                                    <span class="badge bg-success">Connected</span>
+                                </div>
+                                <div class="platform-item d-flex justify-content-between align-items-center mb-2">
+                                    <span><i class="bi bi-facebook text-primary me-2"></i>Facebook</span>
+                                    <span class="badge bg-success">Connected</span>
+                                </div>
+                                <div class="platform-item d-flex justify-content-between align-items-center mb-2">
+                                    <span><i class="bi bi-globe me-2"></i>Website</span>
+                                    <span class="badge bg-success">Active</span>
+                                </div>
+                                <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="managePlatforms()">
+                                    Manage Platforms
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Media Management JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    setupMediaManagement();
+});
+
+function setupMediaManagement() {
+    console.log('Media management initialized');
+}
+
+// Sermon functions
+function addSermon() {
+    uiComponents.showToast('Opening sermon upload form...', 'info');
+}
+
+function playSermon(sermonId) {
+    uiComponents.showToast(`Playing sermon: ${sermonId}`, 'info');
+}
+
+function editSermon(sermonId) {
+    uiComponents.showToast(`Editing sermon: ${sermonId}`, 'info');
+}
+
+function downloadSermon(sermonId) {
+    uiComponents.showToast(`Downloading sermon: ${sermonId}`, 'success');
+}
+
+function shareSermon(sermonId) {
+    uiComponents.showToast(`Sharing sermon: ${sermonId}`, 'info');
+}
+
+// Media library functions
+function uploadMedia() {
+    uiComponents.showToast('Opening media upload interface...', 'info');
+}
+
+function createFolder() {
+    uiComponents.showToast('Creating new folder...', 'info');
+}
+
+function openFolder(folderName) {
+    uiComponents.showToast(`Opening folder: ${folderName}`, 'info');
+}
+
+function viewMedia(mediaId) {
+    uiComponents.showToast(`Viewing media: ${mediaId}`, 'info');
+}
+
+function downloadMedia(mediaId) {
+    uiComponents.showToast(`Downloading media: ${mediaId}`, 'success');
+}
+
+// Document functions
+function uploadDocument() {
+    uiComponents.showToast('Opening document upload...', 'info');
+}
+
+function createDocument() {
+    uiComponents.showToast('Creating new document...', 'info');
+}
+
+function editDocument(docId) {
+    uiComponents.showToast(`Editing document: ${docId}`, 'info');
+}
+
+function downloadDocument(docId) {
+    uiComponents.showToast(`Downloading document: ${docId}`, 'success');
+}
+
+function shareDocument(docId) {
+    uiComponents.showToast(`Sharing document: ${docId}`, 'info');
+}
+
+// Live streaming functions
+function startLiveStream() {
+    uiComponents.showToast('Starting live stream...', 'success');
+}
+
+function scheduleLiveStream() {
+    uiComponents.showToast('Opening stream scheduler...', 'info');
+}
+
+function streamSettings() {
+    uiComponents.showToast('Opening stream settings...', 'info');
+}
+
+function editScheduledStream(streamId) {
+    uiComponents.showToast(`Editing scheduled stream: ${streamId}`, 'info');
+}
+
+function testStream(streamId) {
+    uiComponents.showToast(`Testing stream: ${streamId}`, 'info');
+}
+
+function managePlatforms() {
+    uiComponents.showToast('Opening platform management...', 'info');
+}
+
+// Quick action functions
+function createBulletin() {
+    uiComponents.showToast('Creating new bulletin...', 'info');
+}
+
+function createStudyGuide() {
+    uiComponents.showToast('Creating new study guide...', 'info');
+}
+
+function createForm() {
+    uiComponents.showToast('Creating new form...', 'info');
+}
+
+function organizeLibrary() {
+    uiComponents.showToast('Opening library organization tools...', 'info');
+}
+
+function bulkActions() {
+    uiComponents.showToast('Opening bulk actions panel...', 'info');
+}
+</script>

@@ -1,0 +1,229 @@
+<!-- Admin Panel Section -->
+<section id="admin" class="content-section">
+    <div class="container-fluid">
+        <div class="section-title">
+            <h2>Church Administration Panel</h2>
+            <p>Comprehensive management tools for church staff and administrators</p>
+        </div>
+
+        <!-- Admin Navigation Tabs -->
+        <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button">
+                    <i class="bi bi-speedometer2 me-1"></i>Overview
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="members-tab" data-bs-toggle="tab" data-bs-target="#members-admin" type="button">
+                    <i class="bi bi-people me-1"></i>Members
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-admin" type="button">
+                    <i class="bi bi-calendar-event me-1"></i>Events
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="finances-tab" data-bs-toggle="tab" data-bs-target="#finances" type="button">
+                    <i class="bi bi-cash-stack me-1"></i>Finances
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ministries-tab" data-bs-toggle="tab" data-bs-target="#ministries-admin" type="button">
+                    <i class="bi bi-diagram-3 me-1"></i>Ministries
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="communications-tab" data-bs-toggle="tab" data-bs-target="#communications" type="button">
+                    <i class="bi bi-envelope me-1"></i>Communications
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="adminTabContent">
+            <!-- Overview Tab -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                <div class="row g-4 mb-4">
+                    <!-- Key Performance Indicators -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-1">Total Members</h6>
+                                        <h3 class="text-primary mb-0">487</h3>
+                                        <small class="text-success"><i class="bi bi-arrow-up"></i> +12 this month</small>
+                                    </div>
+                                    <i class="bi bi-people text-primary fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-1">Weekly Attendance</h6>
+                                        <h3 class="text-success mb-0">342</h3>
+                                        <small class="text-success"><i class="bi bi-arrow-up"></i> +5.2% avg</small>
+                                    </div>
+                                    <i class="bi bi-person-check text-success fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-1">Monthly Offerings</h6>
+                                        <h3 class="text-warning mb-0">$48,200</h3>
+                                        <small class="text-success"><i class="bi bi-arrow-up"></i> +8% vs last month</small>
+                                    </div>
+                                    <i class="bi bi-cash-stack text-warning fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card feature-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-1">Active Volunteers</h6>
+                                        <h3 class="text-info mb-0">89</h3>
+                                        <small class="text-success"><i class="bi bi-arrow-up"></i> +7 this month</small>
+                                    </div>
+                                    <i class="bi bi-person-hearts text-info fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Management Actions -->
+                <div class="row g-4 mb-4">
+                    <div class="col-12">
+                        <div class="card feature-card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Quick Management Actions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <button class="btn btn-outline-primary w-100" onclick="addNewMember()">
+                                            <i class="bi bi-person-plus d-block fs-4 mb-1"></i>
+                                            <small>Add Member</small>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <button class="btn btn-outline-success w-100" onclick="recordOffering()">
+                                            <i class="bi bi-cash-stack d-block fs-4 mb-1"></i>
+                                            <small>Record Offering</small>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <button class="btn btn-outline-info w-100" onclick="createEvent()">
+                                            <i class="bi bi-calendar-plus d-block fs-4 mb-1"></i>
+                                            <small>Create Event</small>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <button class="btn btn-outline-warning w-100" onclick="sendBulkEmail()">
+                                            <i class="bi bi-envelope-at d-block fs-4 mb-1"></i>
+                                            <small>Send Email</small>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <button class="btn btn-outline-secondary w-100" onclick="generateReports()">
+                                            <i class="bi bi-file-text d-block fs-4 mb-1"></i>
+                                            <small>Reports</small>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6">
+                                        <button class="btn btn-outline-dark w-100" onclick="manageVolunteers()">
+                                            <i class="bi bi-person-workspace d-block fs-4 mb-1"></i>
+                                            <small>Volunteers</small>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Offerings Table -->
+                <div class="card feature-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Recent Offerings</h5>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-primary" onclick="filterOfferings('today')">Today</button>
+                            <button class="btn btn-outline-primary" onclick="filterOfferings('week')">This Week</button>
+                            <button class="btn btn-outline-primary active" onclick="filterOfferings('month')">This Month</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Service</th>
+                                        <th>Amount</th>
+                                        <th>Method</th>
+                                        <th>Fund</th>
+                                        <th>Recorded By</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dec 10, 2024</td>
+                                        <td>Sunday 11:00 AM</td>
+                                        <td class="text-success fw-bold">$5,300.00</td>
+                                        <td>Mixed</td>
+                                        <td><span class="badge bg-primary">General</span></td>
+                                        <td>John Smith</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editOffering('off001')">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dec 10, 2024</td>
+                                        <td>Sunday 9:00 AM</td>
+                                        <td class="text-success fw-bold">$3,500.00</td>
+                                        <td>Mixed</td>
+                                        <td><span class="badge bg-success">Building</span></td>
+                                        <td>Sarah Johnson</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editOffering('off002')">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dec 7, 2024</td>
+                                        <td>Wednesday 7:00 PM</td>
+                                        <td class="text-success fw-bold">$1,150.00</td>
+                                        <td>Mixed</td>
+                                        <td><span class="badge bg-info">Missions</span></td>
+                                        <td>Michael Davis</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editOffering('off003')">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>

@@ -1,0 +1,605 @@
+<!-- Member Management Section -->
+<section id="members" class="content-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Member Management</h2>
+            <p>Comprehensive member database and management tools for church administrators</p>
+        </div>
+
+        <!-- Member Management Dashboard -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-person-plus text-primary fs-1 mb-2"></i>
+                        <h4 class="text-primary">487</h4>
+                        <h6>Total Members</h6>
+                        <button class="btn btn-outline-primary btn-sm" onclick="addNewMember()">
+                            <i class="bi bi-plus me-1"></i>Add New
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-person-check text-success fs-1 mb-2"></i>
+                        <h4 class="text-success">342</h4>
+                        <h6>Active Members</h6>
+                        <button class="btn btn-outline-success btn-sm" onclick="viewActiveMembers()">
+                            <i class="bi bi-eye me-1"></i>View List
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-person-exclamation text-warning fs-1 mb-2"></i>
+                        <h4 class="text-warning">23</h4>
+                        <h6>Pending Reviews</h6>
+                        <button class="btn btn-outline-warning btn-sm" onclick="reviewPendingMembers()">
+                            <i class="bi bi-clipboard-check me-1"></i>Review
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-person-workspace text-info fs-1 mb-2"></i>
+                        <h4 class="text-info">89</h4>
+                        <h6>Volunteers</h6>
+                        <button class="btn btn-outline-info btn-sm" onclick="manageVolunteers()">
+                            <i class="bi bi-gear me-1"></i>Manage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Management Tools -->
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <div class="btn-group me-3" role="group">
+                    <button class="btn btn-primary" onclick="addNewMember()">
+                        <i class="bi bi-person-plus me-1"></i>Add Member
+                    </button>
+                    <button class="btn btn-outline-primary" onclick="importMembers()">
+                        <i class="bi bi-upload me-1"></i>Import
+                    </button>
+                    <button class="btn btn-outline-primary" onclick="exportMembers()">
+                        <i class="bi bi-download me-1"></i>Export
+                    </button>
+                </div>
+                <button class="btn btn-outline-secondary" onclick="sendBulkEmail()">
+                    <i class="bi bi-envelope-at me-1"></i>Bulk Email
+                </button>
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search members..." id="memberSearchAdmin">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Directory -->
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <h4>Member Directory</h4>
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search members..." id="memberSearch">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Directory Filters -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="btn-group flex-wrap" role="group" aria-label="Member filters">
+                    <input type="radio" class="btn-check" name="memberFilter" id="allMembers" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="allMembers">All Members</label>
+
+                    <input type="radio" class="btn-check" name="memberFilter" id="leadership" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="leadership">Leadership</label>
+
+                    <input type="radio" class="btn-check" name="memberFilter" id="ministryLeaders" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="ministryLeaders">Ministry Leaders</label>
+
+                    <input type="radio" class="btn-check" name="memberFilter" id="newMembers" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="newMembers">New Members</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Members Grid -->
+        <div class="row" id="membersGrid">
+            <!-- Sample Members -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <div class="member-avatar mb-3">
+                            <img src="assets/images/member1.jpg" class="rounded-circle" width="80" height="80" alt="John Smith">
+                        </div>
+                        <h6 class="card-title">John Smith</h6>
+                        <p class="card-text small text-muted">Elder</p>
+                        <span class="badge bg-primary mb-2">Leadership</span>
+                        <div class="member-contact">
+                            <button class="btn btn-sm btn-outline-primary me-1" onclick="contactMember('john-smith')" title="Send Message">
+                                <i class="bi bi-envelope"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="viewMemberProfile('john-smith')" title="View Profile">
+                                <i class="bi bi-person"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <div class="member-avatar mb-3">
+                            <div class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="bi bi-person text-white fs-2"></i>
+                            </div>
+                        </div>
+                        <h6 class="card-title">Sarah Johnson</h6>
+                        <p class="card-text small text-muted">Youth Leader</p>
+                        <span class="badge bg-info mb-2">Youth Ministry</span>
+                        <div class="member-contact">
+                            <button class="btn btn-sm btn-outline-primary me-1" onclick="contactMember('sarah-johnson')" title="Send Message">
+                                <i class="bi bi-envelope"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="viewMemberProfile('sarah-johnson')" title="View Profile">
+                                <i class="bi bi-person"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <div class="member-avatar mb-3">
+                            <div class="bg-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="bi bi-person text-white fs-2"></i>
+                            </div>
+                        </div>
+                        <h6 class="card-title">Michael Davis</h6>
+                        <p class="card-text small text-muted">Worship Leader</p>
+                        <span class="badge bg-warning text-dark mb-2">Worship Team</span>
+                        <div class="member-contact">
+                            <button class="btn btn-sm btn-outline-primary me-1" onclick="contactMember('michael-davis')" title="Send Message">
+                                <i class="bi bi-envelope"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="viewMemberProfile('michael-davis')" title="View Profile">
+                                <i class="bi bi-person"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <div class="member-avatar mb-3">
+                            <div class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="bi bi-person text-white fs-2"></i>
+                            </div>
+                        </div>
+                        <h6 class="card-title">Emily Wilson</h6>
+                        <p class="card-text small text-muted">Children's Director</p>
+                        <span class="badge bg-success mb-2">Children's Ministry</span>
+                        <div class="member-contact">
+                            <button class="btn btn-sm btn-outline-primary me-1" onclick="contactMember('emily-wilson')" title="Send Message">
+                                <i class="bi bi-envelope"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="viewMemberProfile('emily-wilson')" title="View Profile">
+                                <i class="bi bi-person"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Registration -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="feature-card">
+                    <h4 class="text-primary mb-4">New Member Registration</h4>
+                    <p class="mb-4">Join our church family! Fill out the form below to become a member of Grace Community Church.</p>
+                    
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <form id="memberRegistrationForm" class="needs-validation" novalidate>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="address" class="form-label">Address</label>
+                                        <textarea class="form-control" id="address" rows="2"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="birthDate" class="form-label">Birth Date</label>
+                                        <input type="date" class="form-control" id="birthDate">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="membershipType" class="form-label">Membership Type *</label>
+                                        <select class="form-select" id="membershipType" required>
+                                            <option value="">Choose...</option>
+                                            <option value="member">Full Member</option>
+                                            <option value="associate">Associate Member</option>
+                                            <option value="visitor">Regular Visitor</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="interests" class="form-label">Ministry Interests</label>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="worship" value="worship">
+                                                    <label class="form-check-label" for="worship">Worship Team</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="youth" value="youth">
+                                                    <label class="form-check-label" for="youth">Youth Ministry</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="children" value="children">
+                                                    <label class="form-check-label" for="children">Children's Ministry</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="outreach" value="outreach">
+                                                    <label class="form-check-label" for="outreach">Community Outreach</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="hospitality" value="hospitality">
+                                                    <label class="form-check-label" for="hospitality">Hospitality</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="prayer" value="prayer">
+                                                    <label class="form-check-label" for="prayer">Prayer Ministry</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="testimony" class="form-label">Share Your Testimony (Optional)</label>
+                                        <textarea class="form-control" id="testimony" rows="4" placeholder="Tell us about your faith journey..."></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="newsletter" checked>
+                                            <label class="form-check-label" for="newsletter">
+                                                Subscribe to our newsletter and event updates
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="directory" checked>
+                                            <label class="form-check-label" for="directory">
+                                                Include my information in the member directory
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2 mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="bi bi-person-plus me-2"></i>Register as Member
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="feature-card bg-light">
+                                <h5 class="text-primary mb-3">Membership Benefits</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Access to member directory</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Priority event registration</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Small group participation</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Ministry involvement opportunities</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Pastoral care and support</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Church governance participation</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Access to member resources</li>
+                                </ul>
+                                
+                                <div class="mt-4 p-3 bg-white rounded">
+                                    <h6 class="text-primary">Questions?</h6>
+                                    <p class="small mb-2">Contact our membership coordinator:</p>
+                                    <p class="small mb-0">
+                                        <i class="bi bi-envelope me-1"></i>membership@gracecommunity.org<br>
+                                        <i class="bi bi-telephone me-1"></i>(555) 123-4567 ext. 102
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Profile Modal -->
+    <div class="modal fade" id="memberProfileModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Member Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="memberProfileContent">
+                    <!-- Member profile content will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="contactMember()">
+                        <i class="bi bi-envelope me-1"></i>Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Member Modal -->
+    <div class="modal fade" id="contactMemberModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Contact Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contactMemberForm">
+                        <div class="mb-3">
+                            <label for="contactSubject" class="form-label">Subject *</label>
+                            <input type="text" class="form-control" id="contactSubject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Message *</label>
+                            <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="copyMe">
+                            <label class="form-check-label" for="copyMe">
+                                Send me a copy of this message
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="contactMemberForm" class="btn btn-primary">
+                        <i class="bi bi-send me-1"></i>Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Member Management JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        setupMemberManagement();
+    });
+
+    function setupMemberManagement() {
+        // Setup member registration form
+        const registrationForm = document.getElementById('memberRegistrationForm');
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', handleMemberRegistration);
+        }
+
+        // Setup contact form
+        const contactForm = document.getElementById('contactMemberForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', handleContactMember);
+        }
+
+        // Setup member search
+        const memberSearch = document.getElementById('memberSearch');
+        if (memberSearch) {
+            memberSearch.addEventListener('input', function() {
+                searchMembers(this.value);
+            });
+        }
+
+        // Setup member filters
+        const filterButtons = document.querySelectorAll('input[name="memberFilter"]');
+        filterButtons.forEach(button => {
+            button.addEventListener('change', function() {
+                filterMembers(this.id);
+            });
+        });
+    }
+
+    function handleMemberRegistration(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        const formData = new FormData(form);
+        
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing Registration...';
+        submitBtn.disabled = true;
+        
+        // Simulate registration process
+        setTimeout(() => {
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Show success message
+            uiComponents.showToast('Registration successful! Welcome to our church family!', 'success');
+            
+            // Reset form
+            form.reset();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 3000);
+    }
+
+    function handleContactMember(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        const formData = new FormData(form);
+        
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate message sending
+        setTimeout(() => {
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Hide modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('contactMemberModal'));
+            modal.hide();
+            
+            // Show success message
+            uiComponents.showToast('Message sent successfully!', 'success');
+            
+            // Reset form
+            form.reset();
+        }, 2000);
+    }
+
+    function contactMember(memberId) {
+        const modal = new bootstrap.Modal(document.getElementById('contactMemberModal'));
+        modal.show();
+    }
+
+    function viewMemberProfile(memberId) {
+        const modal = new bootstrap.Modal(document.getElementById('memberProfileModal'));
+        const content = document.getElementById('memberProfileContent');
+        
+        // Load member profile content
+        content.innerHTML = `
+            <div class="text-center mb-4">
+                <img src="assets/images/member1.jpg" class="rounded-circle mb-3" width="120" height="120" alt="Member Photo">
+                <h4>John Smith</h4>
+                <p class="text-muted">Elder • Member since 2018</p>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <strong>Ministry Involvement:</strong>
+                    <ul class="list-unstyled mt-1">
+                        <li><span class="badge bg-primary me-1">Leadership</span></li>
+                        <li><span class="badge bg-info me-1">Men's Ministry</span></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <strong>Contact Preferences:</strong>
+                    <ul class="list-unstyled mt-1">
+                        <li><i class="bi bi-envelope me-1"></i>Email preferred</li>
+                        <li><i class="bi bi-telephone me-1"></i>Phone: (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+        
+        modal.show();
+    }
+
+    function searchMembers(searchTerm) {
+        const memberCards = document.querySelectorAll('#membersGrid .card');
+        memberCards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.closest('.col-lg-3').style.display = 
+                text.includes(searchTerm.toLowerCase()) ? 'block' : 'none';
+        });
+    }
+
+    function filterMembers(filterType) {
+        const memberCards = document.querySelectorAll('#membersGrid .card');
+        
+        memberCards.forEach(card => {
+            const badges = card.querySelectorAll('.badge');
+            let shouldShow = filterType === 'allMembers';
+            
+            if (!shouldShow) {
+                badges.forEach(badge => {
+                    const badgeText = badge.textContent.toLowerCase();
+                    switch(filterType) {
+                        case 'leadership':
+                            shouldShow = badgeText.includes('leadership') || badgeText.includes('elder');
+                            break;
+                        case 'ministryLeaders':
+                            shouldShow = badgeText.includes('ministry') || badgeText.includes('leader');
+                            break;
+                        case 'newMembers':
+                            // This would typically check join date
+                            shouldShow = true; // Placeholder logic
+                            break;
+                    }
+                });
+            }
+            
+            card.closest('.col-lg-3').style.display = shouldShow ? 'block' : 'none';
+        });
+    }
+
+    function editProfile() {
+        // Open profile editing modal
+        uiComponents.showToast('Profile editing feature coming soon!', 'info');
+    }
+
+    function viewMyEvents() {
+        // Navigate to personal events view
+        window.location.hash = 'my-events';
+    }
+
+    function viewGivingHistory() {
+        // Navigate to giving history
+        window.location.hash = 'giving-history';
+    }
+
+    function viewMyGroups() {
+        // Navigate to personal groups view
+        window.location.hash = 'my-groups';
+    }
+    </script>

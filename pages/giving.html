@@ -1,0 +1,698 @@
+<!-- Offerings Management Section -->
+<section id="offerings" class="content-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Offerings Management</h2>
+            <p>Track and manage church offerings, tithes, and donations</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-cash-stack text-success fs-1 mb-2"></i>
+                        <h4 class="text-success mb-0">$12,450</h4>
+                        <small class="text-muted">This Week's Offerings</small>
+                        <div class="mt-2">
+                            <small class="text-success">
+                                <i class="bi bi-arrow-up"></i> +15% from last week
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-calendar-month text-primary fs-1 mb-2"></i>
+                        <h4 class="text-primary mb-0">$48,200</h4>
+                        <small class="text-muted">This Month's Total</small>
+                        <div class="mt-2">
+                            <small class="text-success">
+                                <i class="bi bi-arrow-up"></i> +8% from last month
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-people text-info fs-1 mb-2"></i>
+                        <h4 class="text-info mb-0">156</h4>
+                        <small class="text-muted">Active Givers</small>
+                        <div class="mt-2">
+                            <small class="text-success">
+                                <i class="bi bi-arrow-up"></i> +3 new this month
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card feature-card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-graph-up text-warning fs-1 mb-2"></i>
+                        <h4 class="text-warning mb-0">$2,100</h4>
+                        <small class="text-muted">Average Weekly</small>
+                        <div class="mt-2">
+                            <small class="text-success">
+                                <i class="bi bi-arrow-up"></i> +12% this quarter
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Management Actions -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4">
+                <div class="card feature-card text-center h-100">
+                    <div class="card-body">
+                        <div class="card-icon mx-auto mb-3">
+                            <i class="bi bi-plus-circle"></i>
+                        </div>
+                        <h5>Record Offering</h5>
+                        <p>Record cash, check, or online offerings received during services.</p>
+                        <button class="btn btn-primary" onclick="openOfferingEntry()">
+                            <i class="bi bi-plus me-1"></i>Record Offering
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card feature-card text-center h-100">
+                    <div class="card-body">
+                        <div class="card-icon mx-auto mb-3">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <h5>Generate Reports</h5>
+                        <p>Create detailed financial reports for leadership and accounting purposes.</p>
+                        <button class="btn btn-success" onclick="openReportsPanel()">
+                            <i class="bi bi-file-text me-1"></i>View Reports
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card feature-card text-center h-100">
+                    <div class="card-body">
+                        <div class="card-icon mx-auto mb-3">
+                            <i class="bi bi-receipt"></i>
+                        </div>
+                        <h5>Tax Receipts</h5>
+                        <p>Generate and send tax-deductible receipts to donors for their records.</p>
+                        <button class="btn btn-info" onclick="openReceiptsPanel()">
+                            <i class="bi bi-receipt me-1"></i>Manage Receipts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offerings Management Tools -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="text-primary mb-0">Offerings Management</h4>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" onclick="openOfferingEntry()">
+                                    <i class="bi bi-plus me-1"></i>Record New
+                                </button>
+                                <button class="btn btn-outline-primary" onclick="importOfferings()">
+                                    <i class="bi bi-upload me-1"></i>Import
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Offerings Table -->
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Service</th>
+                                        <th>Cash</th>
+                                        <th>Checks</th>
+                                        <th>Online</th>
+                                        <th>Total</th>
+                                        <th>Fund</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="offeringsTableBody">
+                                    <tr>
+                                        <td>Dec 10, 2024</td>
+                                        <td>Sunday 11:00 AM</td>
+                                        <td>$1,250.00</td>
+                                        <td>$3,200.00</td>
+                                        <td>$850.00</td>
+                                        <td><strong>$5,300.00</strong></td>
+                                        <td><span class="badge bg-primary">General</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editOffering('off001')" title="Edit">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-info me-1" onclick="viewOfferingDetails('off001')" title="View Details">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-success" onclick="generateReceipt('off001')" title="Generate Receipt">
+                                                <i class="bi bi-receipt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dec 10, 2024</td>
+                                        <td>Sunday 9:00 AM</td>
+                                        <td>$980.00</td>
+                                        <td>$2,100.00</td>
+                                        <td>$420.00</td>
+                                        <td><strong>$3,500.00</strong></td>
+                                        <td><span class="badge bg-success">Building</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editOffering('off002')" title="Edit">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-info me-1" onclick="viewOfferingDetails('off002')" title="View Details">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-success" onclick="generateReceipt('off002')" title="Generate Receipt">
+                                                <i class="bi bi-receipt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dec 7, 2024</td>
+                                        <td>Wednesday 7:00 PM</td>
+                                        <td>$320.00</td>
+                                        <td>$680.00</td>
+                                        <td>$150.00</td>
+                                        <td><strong>$1,150.00</strong></td>
+                                        <td><span class="badge bg-info">Missions</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editOffering('off003')" title="Edit">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-info me-1" onclick="viewOfferingDetails('off003')" title="View Details">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-success" onclick="generateReceipt('off003')" title="Generate Receipt">
+                                                <i class="bi bi-receipt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <form id="givingForm" class="needs-validation" novalidate>
+                            <!-- Giving Type -->
+                            <div class="mb-4">
+                                <label class="form-label">Donation Type *</label>
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="donationType" id="oneTime" value="one-time" checked>
+                                    <label class="btn btn-outline-primary" for="oneTime">One-Time</label>
+                                    <input type="radio" class="btn-check" name="donationType" id="recurring" value="recurring">
+                                    <label class="btn btn-outline-primary" for="recurring">Recurring</label>
+                                </div>
+                            </div>
+
+                            <!-- Recurring Options (hidden by default) -->
+                            <div id="recurringOptions" class="mb-4" style="display: none;">
+                                <label class="form-label">Frequency</label>
+                                <select class="form-select" id="frequency">
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly" selected>Monthly</option>
+                                    <option value="quarterly">Quarterly</option>
+                                    <option value="annually">Annually</option>
+                                </select>
+                            </div>
+
+                            <!-- Amount Selection -->
+                            <div class="mb-4">
+                                <label class="form-label">Amount *</label>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-outline-secondary w-100 amount-btn" data-amount="25">$25</button>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-outline-secondary w-100 amount-btn" data-amount="50">$50</button>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-outline-secondary w-100 amount-btn" data-amount="100">$100</button>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-outline-secondary w-100 amount-btn" data-amount="250">$250</button>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="customAmount" placeholder="Enter custom amount" min="1" step="0.01" required>
+                                </div>
+                            </div>
+
+                            <!-- Fund Selection -->
+                            <div class="mb-4">
+                                <label for="fundSelection" class="form-label">Designate Funds *</label>
+                                <select class="form-select" id="fundSelection" required>
+                                    <option value="">Choose fund...</option>
+                                    <option value="general">General Fund</option>
+                                    <option value="building">Building Fund</option>
+                                    <option value="missions">Missions</option>
+                                    <option value="youth">Youth Ministry</option>
+                                    <option value="children">Children's Ministry</option>
+                                    <option value="outreach">Community Outreach</option>
+                                    <option value="other">Other (specify below)</option>
+                                </select>
+                            </div>
+
+                            <!-- Other Fund Specification -->
+                            <div id="otherFundDiv" class="mb-4" style="display: none;">
+                                <label for="otherFund" class="form-label">Specify Fund</label>
+                                <input type="text" class="form-control" id="otherFund" placeholder="Please specify...">
+                            </div>
+
+                            <!-- Donor Information -->
+                            <h5 class="text-primary mb-3">Donor Information</h5>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="donorFirstName" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="donorFirstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="donorLastName" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="donorLastName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="donorEmail" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="donorEmail" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="donorPhone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="donorPhone">
+                                </div>
+                                <div class="col-12">
+                                    <label for="donorAddress" class="form-label">Address (for tax receipt)</label>
+                                    <textarea class="form-control" id="donorAddress" rows="2"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Payment Method -->
+                            <h5 class="text-primary mb-3">Payment Method</h5>
+                            <div class="mb-4">
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="paymentMethod" id="creditCard" value="card" checked>
+                                    <label class="btn btn-outline-primary" for="creditCard">
+                                        <i class="bi bi-credit-card me-1"></i>Credit/Debit Card
+                                    </label>
+                                    <input type="radio" class="btn-check" name="paymentMethod" id="bankTransfer" value="bank">
+                                    <label class="btn btn-outline-primary" for="bankTransfer">
+                                        <i class="bi bi-bank me-1"></i>Bank Transfer
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Card Payment Form -->
+                            <div id="cardPaymentForm">
+                                <div class="row g-3 mb-4">
+                                    <div class="col-12">
+                                        <label for="cardNumber" class="form-label">Card Number *</label>
+                                        <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="expiryDate" class="form-label">Expiry Date *</label>
+                                        <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="cvv" class="form-label">CVV *</label>
+                                        <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="cardName" class="form-label">Name on Card *</label>
+                                        <input type="text" class="form-control" id="cardName" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bank Transfer Form (hidden by default) -->
+                            <div id="bankTransferForm" style="display: none;">
+                                <div class="alert alert-info">
+                                    <h6><i class="bi bi-info-circle me-2"></i>Bank Transfer Information</h6>
+                                    <p class="mb-2"><strong>Account Name:</strong> Grace Community Church</p>
+                                    <p class="mb-2"><strong>Account Number:</strong> 123456789</p>
+                                    <p class="mb-2"><strong>Routing Number:</strong> 987654321</p>
+                                    <p class="mb-0"><strong>Bank:</strong> First National Bank</p>
+                                </div>
+                            </div>
+
+                            <!-- Additional Options -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="anonymous">
+                                    <label class="form-check-label" for="anonymous">
+                                        Make this donation anonymous
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="taxReceipt" checked>
+                                    <label class="form-check-label" for="taxReceipt">
+                                        Send me a tax-deductible receipt
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="coverFees">
+                                    <label class="form-check-label" for="coverFees">
+                                        Cover processing fees (adds 2.9% + $0.30)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Special Message -->
+                            <div class="mb-4">
+                                <label for="donationMessage" class="form-label">Special Message (Optional)</label>
+                                <textarea class="form-control" id="donationMessage" rows="3" placeholder="Share why you're giving or any special message..."></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-shield-check me-2"></i>Secure Donation
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Giving Summary Sidebar -->
+            <div class="col-lg-4">
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <h5 class="text-primary mb-3">Your Giving Impact</h5>
+                        <div class="giving-stats">
+                            <div class="stat-item mb-3">
+                                <h4 class="text-success mb-0">$2,450</h4>
+                                <small class="text-muted">Total Given This Year</small>
+                            </div>
+                            <div class="stat-item mb-3">
+                                <h4 class="text-info mb-0">12</h4>
+                                <small class="text-muted">Donations Made</small>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        
+                        <h6 class="mb-3">Recent Donations</h6>
+                        <div class="recent-donations">
+                            <div class="donation-item d-flex justify-content-between mb-2">
+                                <span class="small">General Fund</span>
+                                <span class="small text-success">$100</span>
+                            </div>
+                            <div class="donation-item d-flex justify-content-between mb-2">
+                                <span class="small">Building Fund</span>
+                                <span class="small text-success">$250</span>
+                            </div>
+                            <div class="donation-item d-flex justify-content-between mb-2">
+                                <span class="small">Missions</span>
+                                <span class="small text-success">$75</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-outline-primary btn-sm w-100 mt-3" onclick="viewGivingHistory()">
+                            View Full History
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Security Information -->
+                <div class="card feature-card mt-4">
+                    <div class="card-body">
+                        <h6 class="text-primary mb-3">
+                            <i class="bi bi-shield-check me-2"></i>Secure & Safe
+                        </h6>
+                        <ul class="list-unstyled small">
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>256-bit SSL encryption</li>
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>PCI DSS compliant</li>
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>No card information stored</li>
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Instant email receipts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Giving Goals -->
+                <div class="card feature-card mt-4">
+                    <div class="card-body">
+                        <h6 class="text-primary mb-3">Current Giving Goals</h6>
+                        
+                        <div class="goal-item mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small">Building Fund</span>
+                                <span class="small">$45,000 / $75,000</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-item mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small">Mission Trip</span>
+                                <span class="small">$8,500 / $15,000</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" style="width: 57%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small">Youth Camp</span>
+                                <span class="small">$3,200 / $5,000</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" style="width: 64%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Giving Testimonials -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h4 class="text-primary mb-4 text-center">Why We Give</h4>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="card feature-card text-center">
+                            <div class="card-body">
+                                <i class="bi bi-quote text-primary fs-2 mb-3"></i>
+                                <p class="fst-italic">"Giving to our church has been such a blessing. Seeing how our contributions help our community grow in faith is incredible."</p>
+                                <footer class="blockquote-footer mt-2">
+                                    <cite title="Source Title">Mary Thompson</cite>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card feature-card text-center">
+                            <div class="card-body">
+                                <i class="bi bi-quote text-primary fs-2 mb-3"></i>
+                                <p class="fst-italic">"The online giving platform makes it so easy to support the ministries that are close to my heart."</p>
+                                <footer class="blockquote-footer mt-2">
+                                    <cite title="Source Title">David Rodriguez</cite>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card feature-card text-center">
+                            <div class="card-body">
+                                <i class="bi bi-quote text-primary fs-2 mb-3"></i>
+                                <p class="fst-italic">"Setting up recurring giving has helped me be more consistent in my stewardship and support of God's work."</p>
+                                <footer class="blockquote-footer mt-2">
+                                    <cite title="Source Title">Jennifer Lee</cite>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Giving Form JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    setupGivingForm();
+});
+
+function setupGivingForm() {
+    // Setup donation type toggle
+    const donationTypeInputs = document.querySelectorAll('input[name="donationType"]');
+    donationTypeInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            toggleRecurringOptions(this.value === 'recurring');
+        });
+    });
+
+    // Setup payment method toggle
+    const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
+    paymentMethodInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            togglePaymentForm(this.value);
+        });
+    });
+
+    // Setup amount buttons
+    const amountButtons = document.querySelectorAll('.amount-btn');
+    amountButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            selectAmount(this.getAttribute('data-amount'));
+        });
+    });
+
+    // Setup fund selection
+    const fundSelection = document.getElementById('fundSelection');
+    if (fundSelection) {
+        fundSelection.addEventListener('change', function() {
+            toggleOtherFund(this.value === 'other');
+        });
+    }
+
+    // Setup form submission
+    const givingForm = document.getElementById('givingForm');
+    if (givingForm) {
+        givingForm.addEventListener('submit', handleGivingSubmission);
+    }
+}
+
+function selectGivingOption(option) {
+    const fundSelection = document.getElementById('fundSelection');
+    if (fundSelection) {
+        fundSelection.value = option;
+    }
+    
+    // Scroll to form
+    document.getElementById('givingForm').scrollIntoView({ behavior: 'smooth' });
+}
+
+function toggleRecurringOptions(show) {
+    const recurringOptions = document.getElementById('recurringOptions');
+    if (recurringOptions) {
+        recurringOptions.style.display = show ? 'block' : 'none';
+    }
+}
+
+function togglePaymentForm(method) {
+    const cardForm = document.getElementById('cardPaymentForm');
+    const bankForm = document.getElementById('bankTransferForm');
+    
+    if (method === 'card') {
+        cardForm.style.display = 'block';
+        bankForm.style.display = 'none';
+    } else {
+        cardForm.style.display = 'none';
+        bankForm.style.display = 'block';
+    }
+}
+
+function selectAmount(amount) {
+    const customAmountInput = document.getElementById('customAmount');
+    if (customAmountInput) {
+        customAmountInput.value = amount;
+    }
+    
+    // Update button states
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline-secondary');
+    });
+    
+    event.target.classList.remove('btn-outline-secondary');
+    event.target.classList.add('btn-primary');
+}
+
+function toggleOtherFund(show) {
+    const otherFundDiv = document.getElementById('otherFundDiv');
+    if (otherFundDiv) {
+        otherFundDiv.style.display = show ? 'block' : 'none';
+    }
+}
+
+function handleGivingSubmission(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    // Validate form
+    if (!form.checkValidity()) {
+        e.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+    }
+    
+    // Show loading state
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing Donation...';
+    submitBtn.disabled = true;
+    
+    // Simulate payment processing
+    setTimeout(() => {
+        // Reset button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        // Show success message
+        showDonationSuccess();
+        
+        // Reset form
+        form.reset();
+        form.classList.remove('was-validated');
+        
+        // Reset amount buttons
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-outline-secondary');
+        });
+    }, 3000);
+}
+
+function showDonationSuccess() {
+    const successModal = uiComponents.createModal(
+        'donationSuccessModal',
+        'Donation Successful!',
+        `
+        <div class="text-center">
+            <i class="bi bi-check-circle text-success" style="font-size: 4rem;"></i>
+            <h4 class="text-success mt-3">Thank You!</h4>
+            <p>Your donation has been processed successfully. You will receive a confirmation email shortly.</p>
+            <div class="alert alert-info">
+                <strong>Transaction ID:</strong> TXN${Date.now()}
+            </div>
+            <button class="btn btn-primary" onclick="downloadReceipt()">
+                <i class="bi bi-download me-1"></i>Download Receipt
+            </button>
+        </div>
+        `
+    );
+    
+    successModal.show();
+}
+
+function downloadReceipt() {
+    // Generate and download receipt
+    uiComponents.showToast('Receipt downloaded successfully!', 'success');
+}
+
+function viewGivingHistory() {
+    // Navigate to giving history page
+    window.location.hash = 'giving-history';
+}
+</script>
